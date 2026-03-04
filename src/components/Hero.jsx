@@ -16,7 +16,7 @@ const LinkedinIcon = () => (
 );
 const icons = { GitHub: GithubIcon, LinkedIn: LinkedinIcon };
 
-// Contadores animados dos stats
+
 function StatItem({ target, suffix = "+", label, delay = 0 }) {
   const { ref, value } = useCounter(target, { duration: 1800, delay });
   return (

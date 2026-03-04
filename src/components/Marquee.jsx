@@ -1,11 +1,8 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/Marquee.jsx
-// Faixa horizontal com as tecnologias rolando em loop infinito.
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { MARQUEE_ITEMS } from "../data/content";
 
 export function Marquee() {
-  // Duplica os itens para criar o efeito de loop contínuo
+ 
   const doubled = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
 
   return (

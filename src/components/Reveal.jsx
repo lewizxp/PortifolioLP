@@ -1,12 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/Reveal.jsx
-// Componente que envolve qualquer elemento e o anima quando entra na tela.
-//
-// Props:
-//   children — o conteúdo a animar
-//   dir      — direção de entrada: "up" | "left" | "right" (padrão: "up")
-//   delay    — atraso em ms antes de animar (padrão: 0)
-//   style    — estilos extras opcionais
+
 // ─────────────────────────────────────────────────────────────────────────────
 import { useReveal } from "../hooks/useReveal";
 

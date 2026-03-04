@@ -1,7 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/About.jsx
-// Seção "Sobre mim" com bio, skills por categoria e timeline de carreira.
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { T } from "../data/translations";
 import { SKILLS, TIMELINE } from "../data/content";
 import { Reveal } from "./Reveal";

@@ -1,8 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/LoadingScreen.jsx
-// Tela de carregamento animada que aparece por ~1.8s antes do site.
-// Exibe as iniciais "LP" com uma barra de progresso que cresce e some.
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useState, useEffect } from "react";
 
 export function LoadingScreen({ onDone }) {
@@ -10,7 +6,7 @@ export function LoadingScreen({ onDone }) {
   const [hiding,   setHiding]   = useState(false);
 
   useEffect(() => {
-    // Avança a barra de 0 → 100 em ~1.4s
+    
     const duration = 1400;
     const steps    = 60;
     const interval = duration / steps;
@@ -21,7 +17,7 @@ export function LoadingScreen({ onDone }) {
       setProgress(Math.min(cur, 100));
       if (cur >= 100) {
         clearInterval(timer);
-        // Pequena pausa antes de sumir
+       
         setTimeout(() => {
           setHiding(true);
           setTimeout(onDone, 600);

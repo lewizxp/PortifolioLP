@@ -1,8 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/AnimatedName.jsx
-// Exibe o nome com efeito de máquina de escrever, trocando de idioma
-// automaticamente em loop: PT → JP → EN → KR → RU → AR → PT ...
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useState, useEffect } from "react";
 import { NAME_VARIANTS } from "../data/content";
 
@@ -17,13 +13,13 @@ export function AnimatedName() {
 
     if (phase === "typing") {
       if (text.length < full.length) {
-        // Digita uma letra por vez com velocidade levemente aleatória
+        
         timeout = setTimeout(
           () => setText(full.slice(0, text.length + 1)),
           65 + Math.random() * 50
         );
       } else {
-        // Terminou de digitar → espera antes de apagar
+       
         timeout = setTimeout(() => setPhase("hold"), 1800);
       }
 

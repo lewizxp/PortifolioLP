@@ -1,32 +1,19 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/NetworkParticles.jsx
-//
-// Animação de rede neural no Canvas — zero dependências externas.
-// Nós flutuam pelo Hero e se conectam com linhas quando estão próximos.
-// O mouse atrai os nós ao redor, criando interação orgânica.
-//
-// Otimizações:
-//   - requestAnimationFrame com cleanup correto
-//   - ResizeObserver para adaptar ao tamanho do container
-//   - Quantidade de nós limitada por área da tela (não sobrecarrega mobile)
-//   - Canvas com devicePixelRatio para telas retina sem blur
-//   - Pausa automaticamente quando aba não está visível (Page Visibility API)
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useEffect, useRef } from "react";
 
-// ── Configurações ─────────────────────────────────────────────────────────────
+
 const CONFIG = {
-  nodeDensity:    8000,   // 1 nó por X px² de tela
-  maxNodes:       90,     // limite absoluto
-  minNodes:       20,     // mínimo mesmo em telas pequenas
-  nodeRadius:     1.8,    // raio dos nós em px
-  speed:          0.28,   // velocidade base de movimento
-  connectDist:    140,    // distância máxima para desenhar linha
-  mouseRadius:    180,    // raio de influência do mouse
-  mouseStrength:  0.04,   // força de atração do mouse (0–1)
-  nodeColor:      "200,240,101",  // verde-lima em RGB (sem #)
-  lineOpacityMax: 0.18,           // opacidade máxima das linhas
-  nodeOpacity:    0.55,           // opacidade dos nós
+  nodeDensity:    8000,   
+  maxNodes:       90,    
+  minNodes:       20,    
+  nodeRadius:     1.8,    
+  speed:          0.28,  
+  connectDist:    140,    
+  mouseRadius:    180,   
+  mouseStrength:  0.04,   
+  nodeColor:      "200,240,101",  
+  lineOpacityMax: 0.18,           
+  nodeOpacity:    0.55,           
 };
 
 export function NetworkParticles() {
@@ -37,15 +24,15 @@ export function NetworkParticles() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
 
-    // Posição do mouse (começa fora da tela)
+    
     const mouse = { x: -9999, y: -9999 };
 
-    // Array de nós
+    
     let nodes = [];
     let animId;
     let paused = false;
 
-    // ── Inicializa ou reinicializa o canvas e os nós ──────────────────────────
+
     function init() {
       const dpr = window.devicePixelRatio || 1;
       const w   = canvas.offsetWidth;
@@ -55,7 +42,7 @@ export function NetworkParticles() {
       canvas.height = h * dpr;
       ctx.scale(dpr, dpr);
 
-      // Quantidade de nós proporcional à área
+   
       const count = Math.min(
         CONFIG.maxNodes,
         Math.max(CONFIG.minNodes, Math.floor((w * h) / CONFIG.nodeDensity))
@@ -70,7 +57,7 @@ export function NetworkParticles() {
       }));
     }
 
-    // ── Frame de animação ─────────────────────────────────────────────────────
+   
     function draw() {
       if (paused) { animId = requestAnimationFrame(draw); return; }
 
@@ -79,9 +66,9 @@ export function NetworkParticles() {
 
       ctx.clearRect(0, 0, w, h);
 
-      // Atualiza posição de cada nó
+      
       for (const n of nodes) {
-        // Atração suave pelo mouse
+     
         const dx = mouse.x - n.x;
         const dy = mouse.y - n.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -91,7 +78,7 @@ export function NetworkParticles() {
           n.vy += dy / dist * force;
         }
 
-        // Limita velocidade máxima
+    
         const speed = Math.sqrt(n.vx * n.vx + n.vy * n.vy);
         if (speed > CONFIG.speed * 2.5) {
           n.vx = (n.vx / speed) * CONFIG.speed * 2.5;
@@ -101,14 +88,14 @@ export function NetworkParticles() {
         n.x += n.vx;
         n.y += n.vy;
 
-        // Rebate nas bordas suavemente
+       
         if (n.x < 0)  { n.x = 0;  n.vx *= -1; }
         if (n.x > w)  { n.x = w;  n.vx *= -1; }
         if (n.y < 0)  { n.y = 0;  n.vy *= -1; }
         if (n.y > h)  { n.y = h;  n.vy *= -1; }
       }
 
-      // Desenha linhas entre nós próximos
+      
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const a  = nodes[i];
@@ -118,7 +105,7 @@ export function NetworkParticles() {
           const d  = Math.sqrt(dx * dx + dy * dy);
 
           if (d < CONFIG.connectDist) {
-            // Opacidade diminui com a distância
+         
             const opacity = (1 - d / CONFIG.connectDist) * CONFIG.lineOpacityMax;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -130,7 +117,7 @@ export function NetworkParticles() {
         }
       }
 
-      // Desenha os nós
+      
       for (const n of nodes) {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
@@ -149,10 +136,10 @@ export function NetworkParticles() {
     };
     const handleMouseLeave = () => { mouse.x = -9999; mouse.y = -9999; };
 
-    // Pausa quando aba não está visível (economiza CPU)
+    
     const handleVisibility = () => { paused = document.hidden; };
 
-    // Reinicializa ao redimensionar
+    
     const ro = new ResizeObserver(() => { init(); });
 
     canvas.addEventListener("mousemove",  handleMouseMove);

@@ -8,7 +8,7 @@ export const T = {
     navAbout:           "sobre",
     navProjects:        "projetos",
     navContact:         "contato",
-    hireMe:             "Hire me",
+    hireMe:             "Contrate-me",
     secAbout:           "Sobre",
     secProjects:        "Projetos",
     secContact:         "Contato",

@@ -1,7 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/SectionLabel.jsx
-// Cabeçalho de seção no estilo "01 / Sobre ──────────"
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { Reveal } from "./Reveal";
 
 export function SectionLabel({ n, label }) {

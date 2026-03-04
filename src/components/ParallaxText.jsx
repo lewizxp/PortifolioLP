@@ -1,11 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/ParallaxText.jsx
-//
-// Seção entre About e Projects com frases em parallax.
-// Cada palavra/linha se move a velocidades diferentes conforme o scroll,
-// criando profundidade. Aparece com fade + slide quando entra na viewport.
-// Zero dependências — IntersectionObserver + scroll listener puro.
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useEffect, useRef } from "react";
 
 const LINES = [

@@ -1,13 +1,9 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/ProjectDetail.jsx
-// Overlay de página inteira que aparece ao clicar num card de projeto.
-// Sem react-router — usa estado local passado pelo App.
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useEffect } from "react";
 import { T } from "../data/translations";
 import { MockPreview } from "./MockPreview";
 
-// Dados extras de cada projeto (highlights, stack detalhada, resultado)
+
 const PROJECT_DETAILS = {
   "01": {
     role:     "Full Stack Developer",
@@ -18,7 +14,7 @@ const PROJECT_DETAILS = {
       "Relatórios em tempo real com filtros por período e categoria",
       "Interface responsiva integrada ao ambiente interno da Stone",
     ],
-    stack: ["React", "Node.js", "PostgreSQL", "REST API", "Git"],
+    stack: ["JavaScript", "Appsheet" ],
     result: "Sistema em produção · Stone Pagamentos · 2025",
   },
   "02": {
@@ -33,37 +29,13 @@ const PROJECT_DETAILS = {
     stack: ["React", "CSS", "Figma", "Vite", "Git"],
     result: "Site entregue ao cliente · TotalPrevi · DevWest",
   },
-  "03": {
-    role:     "Front-end Developer",
-    duration: "DevWest · 2025",
-    highlights: [
-      "Criação de componentes reutilizáveis seguindo o design system do Figma",
-      "Cards de planos de previdência com variantes de estado",
-      "Componentização para facilitar manutenção e escala do produto",
-      "Documentação dos componentes para uso do time",
-    ],
-    stack: ["React", "Figma", "Design System", "CSS", "Git"],
-    result: "Componentes em produção · TotalPrevi · DevWest",
-  },
-  "04": {
-    role:     "Front-end Developer",
-    duration: "DevWest · 2025",
-    highlights: [
-      "Página 'Sobre' com storytelling visual da empresa do cliente",
-      "Seções com animações de entrada ao scroll",
-      "Responsividade completa para mobile, tablet e desktop",
-      "Alinhamento com identidade visual definida no Figma",
-    ],
-    stack: ["React", "CSS", "Figma", "Animações", "Responsivo"],
-    result: "Página entregue ao cliente · TotalPrevi · DevWest",
-  },
+  
 };
 
 export function ProjectDetail({ project, lang, onClose }) {
   const t       = T[lang];
   const details = PROJECT_DETAILS[project.id] || {};
 
-  // Fecha com Escape
   useEffect(() => {
     const fn = (e) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", fn);
@@ -85,7 +57,7 @@ export function ProjectDetail({ project, lang, onClose }) {
         animation: "fadeIn .25s ease",
       }}
     >
-      {/* Card principal — clique dentro não fecha */}
+     
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
@@ -101,7 +73,7 @@ export function ProjectDetail({ project, lang, onClose }) {
           scrollbarColor: "#222 transparent",
         }}
       >
-        {/* ── Header ── */}
+      
         <div style={{
           padding:      "28px 36px 24px",
           borderBottom: "1px solid var(--border)",
@@ -123,7 +95,7 @@ export function ProjectDetail({ project, lang, onClose }) {
               {project.name}
             </h2>
           </div>
-          {/* Botão fechar */}
+      
           <button onClick={onClose} style={{
             background: "transparent", border: "1px solid var(--border)",
             color: "var(--muted)", cursor: "pointer",
@@ -136,17 +108,17 @@ export function ProjectDetail({ project, lang, onClose }) {
           >✕</button>
         </div>
 
-        {/* ── Corpo ── */}
+      
         <div style={{ padding: "36px 36px 48px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }} className="detail-grid">
 
-          {/* Coluna esquerda */}
+         
           <div>
-            {/* Preview miniatura */}
+           
             <div style={{ height: 220, borderRadius: 4, overflow: "hidden", border: "1px solid var(--border)", marginBottom: 32 }}>
               <MockPreview id={project.id} />
             </div>
 
-            {/* Meta info */}
+           
             <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 32 }}>
               {[
                 ["Ano",      project.year],
@@ -160,7 +132,7 @@ export function ProjectDetail({ project, lang, onClose }) {
               ))}
             </div>
 
-            {/* Stack */}
+           
             <div style={{ marginBottom: 8 }}>
               <div style={{ fontFamily: "DM Sans", fontSize: 10, color: "var(--muted)", letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 14 }}>Stack completa</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 7 }}>
@@ -171,9 +143,9 @@ export function ProjectDetail({ project, lang, onClose }) {
             </div>
           </div>
 
-          {/* Coluna direita */}
+         
           <div>
-            {/* Highlights */}
+            
             <div style={{ marginBottom: 36 }}>
               <div style={{ fontFamily: "DM Sans", fontSize: 10, color: "var(--muted)", letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 20 }}>O que foi construído</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
@@ -186,7 +158,7 @@ export function ProjectDetail({ project, lang, onClose }) {
               </div>
             </div>
 
-            {/* Resultado */}
+           
             {details.result && (
               <div style={{ background: "rgba(200,240,101,.04)", border: "1px solid rgba(200,240,101,.15)", borderRadius: 4, padding: "20px 24px" }}>
                 <div style={{ fontFamily: "DM Sans", fontSize: 10, color: "var(--accent)", letterSpacing: ".1em", textTransform: "uppercase", marginBottom: 10 }}>Resultados</div>
@@ -194,7 +166,7 @@ export function ProjectDetail({ project, lang, onClose }) {
               </div>
             )}
 
-            {/* Link externo */}
+          
             {project.link && project.link !== "#" && (
               <a href={project.link} target="_blank" rel="noopener noreferrer"
                 style={{

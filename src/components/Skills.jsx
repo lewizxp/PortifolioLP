@@ -1,13 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/Skills.jsx — com animações
-//
-// Animações:
-//   - Cards entram com stagger escalonado (não todos juntos)
-//   - Ícone do card flutua em loop suave
-//   - Barras crescem com easing + glow que pulsa ao terminar
-//   - Porcentagem conta de 0 até o valor junto com a barra
-//   - Tags extras aparecem em cascata uma a uma
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useEffect, useRef, useState } from "react";
 import { SectionLabel } from "./SectionLabel";
 
@@ -28,9 +19,10 @@ const SKILL_GROUPS = [
     icon:  "◇",
     items: [
       { name: "Node.js",    level: 78 },
-      { name: "PostgreSQL", level: 72 },
-      { name: "REST API",   level: 85 },
-      { name: "MongoDB",    level: 65 },
+      { name: "Java", level: 72 },
+      { name: "Spring Boot",   level: 74 },
+      { name: "REST API",    level: 80 },
+       { name: "PostgreSQL",    level: 70 },
     ],
   },
   {
@@ -45,9 +37,9 @@ const SKILL_GROUPS = [
   },
 ];
 
-const EXTRA_TAGS = ["React Native", "Python", "Docker", "AWS", "GraphQL", "Prisma", "Jest", "Linux"];
+const EXTRA_TAGS = ["React Native",  "Docker", "AWS",  "Prisma", "Linux"];
 
-// ── Contador 0 → target quando ativo ─────────────────────────────────────────
+
 function useCountUp(target, active, delay, duration = 1100) {
   const [val, setVal] = useState(0);
   useEffect(() => {
@@ -67,7 +59,7 @@ function useCountUp(target, active, delay, duration = 1100) {
   return val;
 }
 
-// ── Barra individual ──────────────────────────────────────────────────────────
+
 function SkillBar({ name, level, barDelay, active }) {
   const [barW,   setBarW]  = useState(0);
   const [glowing, setGlow] = useState(false);
@@ -105,7 +97,7 @@ function SkillBar({ name, level, barDelay, active }) {
   );
 }
 
-// ── Card de categoria ─────────────────────────────────────────────────────────
+
 function SkillCard({ group, lang, index, visible }) {
   const [hovered, setHovered] = useState(false);
   const cardDelay = index * 150;
@@ -161,7 +153,7 @@ function SkillCard({ group, lang, index, visible }) {
   );
 }
 
-// ── Seção principal ───────────────────────────────────────────────────────────
+
 export function Skills({ lang }) {
   const ref = useRef(null);
   const [vis, setVis]       = useState(false);

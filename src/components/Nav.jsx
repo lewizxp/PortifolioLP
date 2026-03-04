@@ -1,10 +1,8 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/Nav.jsx — com menu mobile (hamburger)
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useState, useEffect } from "react";
 import { T } from "../data/translations";
 
-// Barra fina de progresso que avança conforme o usuário scrolla
+
 function ScrollProgress() {
   const [pct, setPct] = useState(0);
   useEffect(() => {
@@ -40,7 +38,7 @@ export function Nav({ active, lang, setLang }) {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  // Fecha menu ao redimensionar para desktop
+  
   useEffect(() => {
     const fn = () => { if (window.innerWidth >= 768) setMenuOpen(false); };
     window.addEventListener("resize", fn);

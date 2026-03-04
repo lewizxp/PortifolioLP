@@ -1,7 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/Contact.jsx
-// Seção de contato com formulário e links sociais.
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useState } from "react";
 import { T } from "../data/translations";
 import { CONTACT_LINKS } from "../data/content";
@@ -35,7 +32,7 @@ export function Contact({ lang }) {
 
         <div data-contact-grid style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "start" }}>
 
-          {/* ── Coluna esquerda: título + links ── */}
+          
           <Reveal dir="left">
             <h2
               style={{
@@ -68,7 +65,7 @@ export function Contact({ lang }) {
               {t.contactDesc}
             </p>
 
-            {/* Links de contato */}
+           
             <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
               {CONTACT_LINKS.map(({ label, value }) => (
                 <div
@@ -101,11 +98,11 @@ export function Contact({ lang }) {
             </div>
           </Reveal>
 
-          {/* ── Coluna direita: formulário ── */}
+          
           <Reveal dir="right" delay={150}>
             {!sent ? (
               <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
-                {/* Nome */}
+               
                 <div>
                   <label style={{ fontFamily: "DM Sans", fontSize: 10, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--muted)", display: "block", marginBottom: 4 }}>
                     {t.fieldName}
@@ -121,7 +118,7 @@ export function Contact({ lang }) {
                   />
                 </div>
 
-                {/* Email */}
+               
                 <div>
                   <label style={{ fontFamily: "DM Sans", fontSize: 10, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--muted)", display: "block", marginBottom: 4 }}>
                     {t.fieldEmail}
@@ -137,7 +134,7 @@ export function Contact({ lang }) {
                   />
                 </div>
 
-                {/* Mensagem */}
+                
                 <div>
                   <label style={{ fontFamily: "DM Sans", fontSize: 10, letterSpacing: ".1em", textTransform: "uppercase", color: "var(--muted)", display: "block", marginBottom: 4 }}>
                     {t.fieldMsg}

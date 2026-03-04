@@ -1,8 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/Cursor.jsx
-// Cursor personalizado com ponto central e anel que seguem o mouse.
-// Funciona apenas em desktop (em mobile o cursor padrão permanece).
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useEffect, useRef } from "react";
 
 export function Cursor() {

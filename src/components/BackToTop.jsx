@@ -1,8 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/BackToTop.jsx
-// Botão flutuante que aparece após scrollar 400px.
-// Clica e volta suavemente ao topo.
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useEffect, useState } from "react";
 
 export function BackToTop() {

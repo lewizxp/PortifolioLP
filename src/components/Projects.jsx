@@ -1,8 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// components/Projects.jsx
-// Grid de cards de projetos com preview visual, hover animado e layout
-// alternado (card largo / card quadrado).
-// ─────────────────────────────────────────────────────────────────────────────
+
 import { useState } from "react";
 import { T } from "../data/translations";
 import { PROJECTS } from "../data/content";
@@ -22,7 +18,6 @@ export function Projects({ lang, onSelectProject }) {
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <SectionLabel n="02" label={t.secProjects} />
 
-        {/* Título da seção */}
         <Reveal>
           <div
             style={{
@@ -51,11 +46,11 @@ export function Projects({ lang, onSelectProject }) {
           </div>
         </Reveal>
 
-        {/* Grid de cards */}
+        
         <div className="projects-grid">
           {PROJECTS.map((p, i) => {
             const isHovered = hovered === i;
-            // Primeiro e último cards ocupam a linha inteira
+            
             const isWide = i === 0 || i === 3;
 
             return (
@@ -80,7 +75,7 @@ export function Projects({ lang, onSelectProject }) {
                   }}
                   className={isWide ? "project-card-wide" : ""}
                 >
-                  {/* Preview visual */}
+                 
                   <div
                     className="preview-pane"
                     style={{
